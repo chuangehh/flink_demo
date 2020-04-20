@@ -1,0 +1,13 @@
+Apache Flink
+What is Apache Flink?
+Architecture
+Applications
+Operations
+What is Stateful Functions?
+Use Cases
+Powered By
+Plan Visualizer
+Apache Software Foundation
+License  Security  Donate  Thanks
+What is Apache Flink? — Architecture
+Apache Flink is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams. Flink has been designed to run in all common cluster environments, perform computations at in-memory speed and at any scale.
