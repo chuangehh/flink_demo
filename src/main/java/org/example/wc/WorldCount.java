@@ -11,7 +11,7 @@ public class WorldCount {
     public static void main(String[] args) throws Exception {
         ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
-        DataSource<String> source = env.readTextFile("D:\\javaProject\\flink-demo\\src\\main\\resources\\word.data");
+        DataSource<String> source = env.readTextFile("D:\\javaProject\\flink_demo\\src\\main\\resources\\word.data");
         source
                 .flatMap((FlatMapFunction<String, Tuple2<String, Integer>>) (value, out) -> {
                     String[] worlds = value.split("\\s+");
