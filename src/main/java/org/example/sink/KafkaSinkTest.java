@@ -15,7 +15,7 @@ import java.util.Properties;
  *
  * @author liangchuanchuan
  */
-public class KafkaSink {
+public class KafkaSinkTest {
 
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
