@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 public class SensorReading {
 
   private String id;
-  private Long timestamp;
+  private String timestamp;
   private Double temperature;
 
 }

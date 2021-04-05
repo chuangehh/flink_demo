@@ -3,10 +3,13 @@ package org.example.api;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.api.functions.source.SourceFunction;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Properties;
+import java.util.Random;
 
 public class SourceTest {
 
@@ -41,6 +44,28 @@ public class SourceTest {
 
         DataStreamSource<String> stream3 = env.addSource(new FlinkKafkaConsumer<String>("flink.person", new SimpleStringSchema(), properties));
         stream3.print("stream3:");
+
+        // 4.自定义Source
+        DataStreamSource<SensorReading> stream4 = env.addSource(new SourceFunction<SensorReading>() {
+            boolean isStop;
+
+            @Override
+            public void run(SourceContext<SensorReading> sourceContext) throws InterruptedException {
+                Random random = new Random();
+
+
+                while (!isStop) {
+                    sourceContext.collect(new SensorReading("shanghai", new Date(System.currentTimeMillis() ).toString(), random.nextDouble() * 100));
+                    Thread.sleep(1000);
+                }
+            }
+
+            @Override
+            public void cancel() {
+                isStop = true;
+            }
+        });
+        stream4.print();
 
 
         env.execute("stream");
