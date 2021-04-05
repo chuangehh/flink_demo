@@ -1,4 +1,4 @@
-package org.example.api;
+package org.example.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,10 @@ import lombok.RequiredArgsConstructor;
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class Person {
-  String name;
-  Integer age;
+public class SensorReading {
+
+  private String id;
+  private String timestamp;
+  private Double temperature;
+
 }

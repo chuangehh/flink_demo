@@ -1,10 +1,12 @@
-package org.example.api;
+package org.example.source;
 
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
+import org.example.bean.Person;
+import org.example.bean.SensorReading;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -50,7 +52,7 @@ public class SourceTest {
             boolean isStop;
 
             @Override
-            public void run(SourceContext<SensorReading> sourceContext) throws InterruptedException {
+            public void run(SourceFunction.SourceContext<SensorReading> sourceContext) throws InterruptedException {
                 Random random = new Random();
 
 

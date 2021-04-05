@@ -1,4 +1,4 @@
-package org.example.api;
+package org.example.transform;
 
 import org.apache.flink.api.common.functions.ReduceFunction;
 import org.apache.flink.streaming.api.collector.selector.OutputSelector;
@@ -7,6 +7,7 @@ import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.datastream.SplitStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.co.CoMapFunction;
+import org.example.bean.SensorReading;
 import scala.Tuple2;
 import scala.Tuple3;
 
