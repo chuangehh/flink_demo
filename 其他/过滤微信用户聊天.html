@@ -1,0 +1,78 @@
+<!Doctype html>
+<html>
+<head>
+	<title>Java 正则表达式 | 菜鸟教程</title>
+</head>
+
+<style>
+
+.btns {width:143px;height:40px; no-repeat left top;color:#1fa6da;}
+input, button { font-family:"Arial", "Tahoma", "微软雅黑", "雅黑"; border:0; vertical-align:middle; margin:8px; line-height:20px; font-size:18px }
+</style>
+
+
+<body>
+
+
+
+  输入聊天记录
+  <br/>
+  <textarea id='input'  style="height:200px;width:95%;padding-top:1px;font-size:14px;"></textarea>
+  <br/>
+  
+  <input type="submit" class="btns" onmouseover="this.style.backgroundPosition='left -40px'" onmouseout="this.style.backgroundPosition='left top'" 
+  onclick='doSubmitForm()' value="提交" />
+  <br/><br/><br/>
+
+
+
+  微信用户 聊天记录
+  <br/>
+  <textarea id='wei_xin'  style="height:300px;width:95%;padding-top:1px;font-size:14px;"></textarea>
+  <br/><br/>
+
+  企业微信用户 聊天记录
+  <br/>
+  <textarea id='qi_ye_wei_xin'  style="height:200px;width:95%;padding-top:1px;font-size:14px;"></textarea>
+  <br/>
+    
+
+
+<script>
+
+
+function doSubmitForm(){
+	var pattern = ".+[0-9]{1,2}-[0-9]{1,2} [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}";
+
+	var wei_xin_value = "";
+	var qi_ye_wei_xin_value = "";
+	var isStudent = false;
+	var line = "";
+	
+	var lines = document.getElementById('input').value.split("\n");
+	for (i = 0; i < lines.length; i++) {
+		var line = lines[i];
+		if (line.match(pattern) !=null) {
+			if (line.indexOf("@微信@微信联系人") >= 0) {
+				isStudent = true;
+			} else {
+				isStudent = false;
+			}
+		}
+
+		console.log("isStudent:" +isStudent+ " ," +line);
+		if (isStudent) {
+			wei_xin_value = wei_xin_value + line + "\n";
+		} else {
+			qi_ye_wei_xin_value = qi_ye_wei_xin_value + line + "\n";
+		}
+	}
+
+	document.getElementById('wei_xin').value = wei_xin_value;
+	document.getElementById('qi_ye_wei_xin').value = qi_ye_wei_xin_value;
+}
+
+</script>
+
+</body>
+</html>
